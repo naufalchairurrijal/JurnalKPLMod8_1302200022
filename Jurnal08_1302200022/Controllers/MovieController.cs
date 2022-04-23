@@ -8,18 +8,29 @@ namespace Jurnal08_1302200022.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
+        private string[] SemuaMovie = new[]
+        {
+            "The Shawshank Redemtion", "The Godfather", "The Dark Knight"
+        };
+
+        private static List<Movie> MovieList = new List<Movie>()
+        {
+            new Movie("The Shawshank Redemtion", "a", "b"),
+            new Movie("The Godfather", "c", "d"),
+            new Movie("The Dark Knight", "e", "f")
+        };
         // GET: api/<MovieController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IEnumerable<Movie> Get()
         {
-            return new string[] { "value1", "value2" };
+            return MovieList;
         }
 
         // GET api/<MovieController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public Movie Get(int id)
         {
-            return "value";
+            return MovieList[id];
         }
 
         // POST api/<MovieController>
