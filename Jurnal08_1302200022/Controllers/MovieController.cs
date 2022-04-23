@@ -8,11 +8,6 @@ namespace Jurnal08_1302200022.Controllers
     [ApiController]
     public class MovieController : ControllerBase
     {
-        private string[] SemuaMovie = new[]
-        {
-            "The Shawshank Redemtion", "The Godfather", "The Dark Knight"
-        };
-
         private static List<Movie> MovieList = new List<Movie>()
         {
             new Movie("The Shawshank Redemtion", "a", "b"),
@@ -35,8 +30,9 @@ namespace Jurnal08_1302200022.Controllers
 
         // POST api/<MovieController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Movie value)
         {
+            MovieList.Add(value);
         }
 
         // PUT api/<MovieController>/5
@@ -49,6 +45,7 @@ namespace Jurnal08_1302200022.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            MovieList.RemoveAt(id);
         }
     }
 }
